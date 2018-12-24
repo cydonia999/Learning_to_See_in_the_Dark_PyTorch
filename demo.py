@@ -20,13 +20,8 @@ configurations = {
         lr=1e-4,
         momentum=0.9,
         weight_decay=0.0,
-        # gamma=0.1, # "lr_policy: step"
-        gamma=0.25, # "lr_policy: step"
-        # step_size=32300, # "lr_policy: step"
-        # step_size=34320 // 2, # "lr_policy: step" e-6
-        # step_size=34320, # "lr_policy: step" e-6
-        # step_size=38496 // 2, # "lr_policy: step" e-6
-        step_size=40700 // 3, # "lr_policy: step" e-6
+        gamma=0.25,
+        step_size=32300, # "lr_policy: step"
         interval_validate=1000,
     ),
 }
@@ -117,26 +112,6 @@ def main():
         dt = dataset_class(root, args.test_img_list_file, split='test',
                            gt_png=args.gt_png, use_camera_wb=args.use_camera_wb, upper=args.upper_test)
         test_loader = torch.utils.data.DataLoader(dt, batch_size=args.test_batch_size, shuffle=False, **kwargs)
-
-    # if args.cmd == 'train':
-    #     for batch_idx, (raws, imgs, labels, img_files, img_exposures, lbl_exposures, ratios) in tqdm.tqdm(
-    #             enumerate(train_loader), total=len(train_loader),
-    #             desc='Train epoch={}, iter={}'.format(1, 2), ncols=80, leave=False):
-    #         print("new batch(train)", batch_idx, raws.shape, imgs.shape, labels.shape, img_files, img_exposures, lbl_exposures, ratios)
-    #         if batch_idx == 2: break
-    #
-    #     for batch_idx, (raws, imgs, labels, img_files, img_exposures, lbl_exposures, ratios) in tqdm.tqdm(
-    #             enumerate(val_loader), total=len(val_loader),
-    #             desc='Valid epoch={}, iter={}'.format(1, 2), ncols=80, leave=False):
-    #         print("new batch(valid)", batch_idx, raws.shape, imgs.shape, labels.shape, img_files, img_exposures, lbl_exposures, ratios)
-    #         if batch_idx == 2: break
-    #
-    # if args.cmd == 'test':
-    #     for batch_idx, (raws, imgs, labels, img_files, img_exposures, lbl_exposures, ratios) in tqdm.tqdm(
-    #             enumerate(test_loader), total=len(test_loader),
-    #             desc='Test epoch={}, iter={}'.format(1, 2), ncols=80, leave=False):
-    #         print("new batch(test)", batch_idx, raws.shape, imgs.shape, labels.shape, img_files, img_exposures, lbl_exposures, ratios)
-    #         if batch_idx == 2: break
 
     # 2. model
     if 'Fuji' in args.arch_type:
