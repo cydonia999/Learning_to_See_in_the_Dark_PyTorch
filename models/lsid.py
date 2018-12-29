@@ -43,10 +43,9 @@ def pixel_shuffle(input, upscale_factor, depth_first=False):
 
 
 class LSID(nn.Module):
-    def __init__(self, inchannel=4, block_size=2, pixel_shuffle=False):
+    def __init__(self, inchannel=4, block_size=2):
         super(LSID, self).__init__()
         self.block_size = block_size
-        self.pixel_shuffle = pixel_shuffle
 
         self.conv1_1 = nn.Conv2d(inchannel, 32, kernel_size=3, stride=1, padding=1, bias=True)
         self.lrelu =  nn.LeakyReLU(negative_slope=0.2, inplace=True)
@@ -135,7 +134,7 @@ class LSID(nn.Module):
         x = self.lrelu(x)
 
         x = self.up7(x)
-        x = torch.cat((x[:, :, :conv3.size(2), :conv3.size(3)], conv3), 1) # x: [1, 128, 336, 504], conv3: [1, 128, 336, 503]
+        x = torch.cat((x[:, :, :conv3.size(2), :conv3.size(3)], conv3), 1)
 
         x = self.conv7_1(x)
         x = self.lrelu(x)
@@ -160,29 +159,7 @@ class LSID(nn.Module):
 
         x = self.conv10(x)
 
-        if self.pixel_shuffle:
-            depth_to_space_conv = pixel_shuffle(x, upscale_factor=self.block_size, depth_first=True)
-        else:
-            N, C, H, W = x.shape
-            if self.block_size == 2:
-                H, W = 2 * H, 2 * W
-                depth_to_space_conv = torch.zeros((N, C // 4, H, W)).cuda()
-                depth_to_space_conv[:, :, 0:H:2, 0:W:2] = x[:, 0:3, :, :]
-                depth_to_space_conv[:, :, 0:H:2, 1:W:2] = x[:, 3:6, :, :]
-                depth_to_space_conv[:, :, 1:H:2, 0:W:2] = x[:, 6:9, :, :]
-                depth_to_space_conv[:, :, 1:H:2, 1:W:2] = x[:, 9:12, :, :]
-            if self.block_size == 3:
-                H, W = 3 * H, 3 * W
-                depth_to_space_conv = torch.zeros((N, C // 9, H, W)).cuda()
-                depth_to_space_conv[:, :, 0:H:3, 0:W:3] = x[:, 0:3, :, :]
-                depth_to_space_conv[:, :, 0:H:3, 1:W:3] = x[:, 3:6, :, :]
-                depth_to_space_conv[:, :, 0:H:3, 2:W:3] = x[:, 6:9, :, :]
-                depth_to_space_conv[:, :, 1:H:3, 0:W:3] = x[:, 9:12, :, :]
-                depth_to_space_conv[:, :, 1:H:3, 1:W:3] = x[:, 12:15, :, :]
-                depth_to_space_conv[:, :, 1:H:3, 2:W:3] = x[:, 15:18, :, :]
-                depth_to_space_conv[:, :, 2:H:3, 0:W:3] = x[:, 18:21, :, :]
-                depth_to_space_conv[:, :, 2:H:3, 1:W:3] = x[:, 21:24, :, :]
-                depth_to_space_conv[:, :, 2:H:3, 2:W:3] = x[:, 24:27, :, :]
+        depth_to_space_conv = pixel_shuffle(x, upscale_factor=self.block_size, depth_first=True)
 
         return depth_to_space_conv
 

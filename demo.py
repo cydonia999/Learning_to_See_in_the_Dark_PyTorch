@@ -115,9 +115,9 @@ def main():
 
     # 2. model
     if 'Fuji' in args.arch_type:
-        model = LSID.lsid(inchannel=9, block_size=3, pixel_shuffle=args.pixel_shuffle)
+        model = LSID.lsid(inchannel=9, block_size=3)
     else: # Sony
-        model = LSID.lsid(inchannel=4, block_size=2, pixel_shuffle=args.pixel_shuffle)
+        model = LSID.lsid(inchannel=4, block_size=2)
     print(model)
 
     start_epoch = 0
