@@ -15,7 +15,7 @@ specify a converted pretrained model file(see [here](#pretrained-models)) to `--
 
 If you use trained models by this repo, specify model files to `--resume` option.
 
-  * `--tf_weight_file` authors' TensorFlow models(see [here](#pretrained-models)
+  * `--tf_weight_file` authors' TensorFlow models(see [here](#pretrained-models))
   * `--resume` trained models by this repo
 
 ### Training
@@ -63,6 +63,7 @@ I converted the authors TensorFlow checkpoint files to pickle format to load the
 |Sony|[link](https://drive.google.com/open?id=1ZccOIyp674cVIDrEQnUGcd2effZeu5FO)|converted from TensorFlow model|
 |Fuji|[link](https://drive.google.com/open?id=1Gl453ex_ADbrQiDowCZYveHWXug-Rcsl)|converted from TensorFlow model|
 |Sony|[link](https://drive.google.com/open?id=1iEdL_zGrtVkfTEATKqmi4BPxzT-o3NFN)|trained model using this repo from scratch|
+|Fuji|- | not trained by this repo|
 
 
 ### Dataset
@@ -85,7 +86,42 @@ Two types of test data are used:
 |trained from scratch|all|28.55/0.7878(598)|-|
 |trained from scratch|00 only|28.25/0.7721(93)|-|
 
+### Some Results
+
+#### Sony
+
+Camera: Sony a7S II
+
+Info: ISO-2000 f/9 1/10s
+
+Ground truth(RAW: Sony/long/10106_00_30s.ARW)
+
+![gt](results/10106_00_30s.png)
+
+TensorFlow model(RAW: Sony/short/10106_00_0.1s.ARW)
+
+![tf](results/10106_00_0.1s_tf.png)
+
+TensorFlow model(RAW: Sony/short/10106_00_0.1s.ARW)
+
+![tf](results/10106_00_0.1s_pytorch.png)
+
+#### Fuji
+
+Camera: Fuji X-T2
+
+Info: ISO-800 f/7.1 1/30s
+
+Ground truth(RAW: Fuji/long/10068_00_10s.RAF)
+
+![gt](results/10068_00_10s.png)
+
+TensorFlow model(RAW: Fuji/short/10068_00_0.1s.RAF)
+
+![tf](results/10068_00_0.033s_tf.png)
+
 ## References
 
 1. Chen, C., Chen, Q., Xu, J., & Koltun, V. (2018). Learning to See in the Dark. arXiv preprint arXiv:1805.01934.  
-    [arXiv](https://arxiv.org/abs/1805.01934), [github](https://github.com/cchen156/Learning-to-See-in-the-Dark)
+    [arXiv](https://arxiv.org/abs/1805.01934), [github](https://github.com/cchen156/Learning-to-See-in-the-Dark),
+    [Project Website](http://cchen156.web.engr.illinois.edu/SID.html)
