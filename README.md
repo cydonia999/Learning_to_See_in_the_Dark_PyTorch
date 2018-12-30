@@ -79,7 +79,7 @@ Two types of test data are used:
   * "00 only": as written in [here](https://github.com/cchen156/Learning-to-See-in-the-Dark#dataset) 
     "00" means the number in the sequence/burst in the RAW file names like `./Sony/short/10003_00_0.04s.ARW`.
 
-|model|test data|Sony|Fuji|
+|model|test data|Sony(PSNR/SSIM(#images))|Fuji(PSNR/SSIM(#images))|
 | :--- | :---: | :---: | :---: |
 |paper[1]|-|28.88/0.787|26.61/0.680|
 |converted from TensorFlow|all|28.88/0.7980(598)|27.01/0.7241(524)|
