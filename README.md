@@ -80,6 +80,7 @@ Two types of test data are used:
     "00" means the number in the sequence/burst in the RAW file names like `./Sony/short/10003_00_0.04s.ARW`.
 
 |model|test data|Sony|Fuji|
+| :--- | :---: | :---: | :---: |
 |paper[1]|-|28.88/0.787|26.61/0.680|
 |converted from TensorFlow|all|28.88/0.7980(598)|27.01/0.7241(524)|
 |converted from TensorFlow|00 only|28.59/0.7831(93)|26.61/0.7040(94)|
