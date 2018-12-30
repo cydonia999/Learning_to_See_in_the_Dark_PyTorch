@@ -99,11 +99,11 @@ Ground truth(RAW: Sony/long/10106_00_30s.ARW)
 
 ![gt](results/10106_00_30s.png)
 
-TensorFlow model(RAW: Sony/short/10106_00_0.1s.ARW)
+converted TensorFlow model(RAW: Sony/short/10106_00_0.1s.ARW)
 
 ![tf](results/10106_00_0.1s_tf.png)
 
-TensorFlow model(RAW: Sony/short/10106_00_0.1s.ARW)
+PyTorch model trained from scratch(RAW: Sony/short/10106_00_0.1s.ARW)
 
 ![tf](results/10106_00_0.1s_pytorch.png)
 
@@ -117,7 +117,7 @@ Ground truth(RAW: Fuji/long/10068_00_10s.RAF)
 
 ![gt](results/10068_00_10s.png)
 
-TensorFlow model(RAW: Fuji/short/10068_00_0.1s.RAF)
+converted TensorFlow model(RAW: Fuji/short/10068_00_0.1s.RAF)
 
 ![tf](results/10068_00_0.033s_tf.png)
 
