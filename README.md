@@ -95,17 +95,27 @@ Camera: Sony a7S II
 
 Info: ISO-2000 f/9 1/10s
 
-Ground truth(RAW: Sony/long/10106_00_30s.ARW)
+Ground truth(RAW file: `Sony/long/10106_00_30s.ARW`)
 
-![gt](results/10106_00_30s.png)
+![ground_truth](results/10106_00_30s.png)
 
-converted TensorFlow model(RAW: Sony/short/10106_00_0.1s.ARW)
+The following images are inference and white balance results for RAW file: `Sony/short/10106_00_0.1s.ARW`
 
-![tf](results/10106_00_0.1s_tf.png)
+inference by the converted TensorFlow model
 
-PyTorch model trained from scratch(RAW: Sony/short/10106_00_0.1s.ARW)
+![tensorflow](results/10106_00_0.1s_tf.png)
 
-![tf](results/10106_00_0.1s_pytorch.png)
+inference by the PyTorch model trained from scratch
+
+![pytorch](results/10106_00_0.1s_pytorch.png)
+
+white balance by rawpy(`raw.postprocess(use_camera_wb=True, half_size=False, no_auto_bright=False, output_bps=16)`)
+
+![rawpy](results/10106_00_0.1s_wb.png)
+
+white balnce by Imagemagick `convert` command(e.g. `convert arw:10106_00_0.1s.ARW 10106_00_0.1s.png`)
+
+![imagemagick](results/10106_00_0.1s_im.png)
 
 #### Fuji
 
@@ -113,13 +123,24 @@ Camera: Fuji X-T2
 
 Info: ISO-800 f/7.1 1/30s
 
-Ground truth(RAW: Fuji/long/10068_00_10s.RAF)
+Ground truth(RAW file: Fuji/long/10068_00_10s.RAF)
 
-![gt](results/10068_00_10s.png)
+![ground_truth](results/10068_00_10s.png)
 
-converted TensorFlow model(RAW: Fuji/short/10068_00_0.1s.RAF)
+The following images are inference and white balance results for RAW file: `Fuji/short/10068_00_0.033s.RAF`
 
-![tf](results/10068_00_0.033s_tf.png)
+
+inference by the converted TensorFlow model
+
+![tensorflow](results/10068_00_0.033s_tf.png)
+
+white balance by rawpy(`raw.postprocess(use_camera_wb=True, half_size=False, no_auto_bright=False, output_bps=16)`)
+
+![rawpy](results/10068_00_0.033s_wb.png)
+
+white balnce by Imagemagick `convert` command(e.g. `convert raf:10068_00_0.033s.RAF 10068_00_0.033s.png`)
+
+![imagemagick](results/10068_00_0.033s_im.png)
 
 ## References
 
