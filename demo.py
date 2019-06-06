@@ -130,9 +130,8 @@ def main():
         checkpoint['arch'] = args.arch_type
         assert checkpoint['arch'] == args.arch_type
         print("Resume from epoch: {}, iteration: {}".format(start_epoch, start_iteration))
-    else:
-        if args.cmd == 'test':
-            utils.load_state_dict(model, args.tf_weight_file) # load weight values
+    elif args.tf_weight_file != '':
+        utils.load_state_dict(model, args.tf_weight_file) # load weight values
 
     if cuda:
         model = model.cuda()
